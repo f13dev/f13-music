@@ -15,39 +15,11 @@ class Album
             $v .= '<div class="f13-lastfm-album-head">';
                 $v .= $this->data['album']['artist'] . ' - ' . $this->data['album']['name'];
             $v .= '</div>';
-            $albumArt = null;
-            foreach ($this->data['album']['image'] as &$eachImage)
-            {
-                if ($eachImage['size'] == 'mega')
-                {
-                    $albumArt = $eachImage['#text'];
-                }
-            }
-            if ($albumArt != null)
-            {
-                $fileName = explode('/', $albumArt);
-                $fileName = end($fileName);
-                $imageID = $this->f13_get_album_attachment_id($fileName);
-                if ($imageID == null)
-                {
-                    require_once(ABSPATH . 'wp-admin/includes/media.php');
-                    require_once(ABSPATH . 'wp-admin/includes/file.php');
-                    require_once(ABSPATH . 'wp-admin/includes/image.php');
 
-                    media_sideload_image($albumArt, get_the_ID(), $this->data['album']['artist'] . ' - ' . $this->data['album']['name']);
-                    $imageID = $this->f13_get_album_attachment_id($fileName);
-                    $image_url = wp_get_attachment_url($imageID);
-                }
-                else
-                {
-                    $image_url = wp_get_attachment_url($imageID);
-                }
-                if (is_numeric($imageID) && $imageID != null)
-                {
-                    $v .= '<div class="f13-lastfm-album-art">';
-                        $v .= '<img src="' . $image_url . '" />';
-                    $v .= '</div>';
-                }
+            if (!empty($this->art)) {
+                $v .= '<div class="f13-lastfm-album-art">';
+                    $v .= '<img src="'.$this->art.'" />';
+                $v .= '</div>';
             }
 
             if (!empty($this->data['album']['tracks']['track']))
@@ -76,14 +48,14 @@ class Album
                 $v .= '</div>';
             }
 
-            if (array_key_exists('published', $this->data['album']['wiki']))
+            if (array_key_exists('wiki', $this->data['album']) && array_key_exists('published', $this->data['album']['wiki']))
             {
                 $publishDate = explode(',', $this->data['album']['wiki']['published']);
                 $publishDate = $publishDate[0];
                 $v .= '<div class="f13-lastfm-album-published"><span>Published</span>: ' . $publishDate . '</div>';
             }
 
-            if (array_key_exists('summary', $this->data['album']['wiki']))
+            if (array_key_exists('album', $this->data['album']) && array_key_exists('summary', $this->data['album']['wiki']))
             {
                 $v .= '<div class="f13-lastfm-album-summary"><span>Album summary:</span> ' . $this->data['album']['wiki']['summary'] . '</div>';
             }

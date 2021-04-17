@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: F13 LastFM
-Plugin URI: https://f13.dev/wordpress-plugins/wordpress-plugin-lastfm/
+Plugin Name: F13 Music
+Plugin URI: https://f13.dev/wordpress-plugins/wordpress-plugin-music/
 Description: Last FM profile widget, and album shortcode
 Version: 0.0.1
 Author: Jim Valentine

@@ -25,8 +25,8 @@ class LastFM_api
 
     function get_album($anArtist, $anAlbum)
     {
-        $anArtist = str_replace(' ', '+', $anArtist);
-        $anAlbum = str_replace(' ', '+', $anAlbum);
+        $anArtist = urlencode($anArtist);
+        $anAlbum = urlencode($anAlbum);
 
         $url = 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=' . $this->key . '&artist=' . $anArtist . '&album=' . $anAlbum . '&format=json';
 
