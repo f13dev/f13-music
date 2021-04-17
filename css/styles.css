@@ -1,0 +1,92 @@
+.f13-lastfm-album-container
+{
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #222;
+    margin: 10px 0px;
+}
+
+.f13-lastfm-album-head
+{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.f13-lastfm-album-art
+{
+    max-width: 300px;
+    height: auto;
+    float: left;
+    border: 1px solid #222;
+}
+
+.f13-lastfm-album-art > img
+{
+    width: 100%;
+    height: auto;
+}
+
+.f13-lastfm-album-tracks
+{
+    height: auto;
+    float: left;
+}
+
+.f13-lastfm-album-tracks > span
+{
+    display: block;
+    margin-left: 15px;
+}
+
+.f13-lastfm-album-tags
+{
+    clear: both;
+}
+
+.f13-lastfm-album-tags > .f13-lastfm-album-tags-label
+{
+    font-weight: bold;
+    display: block;
+    margin-bottom: -1em;
+    padding-top: 1em;
+}
+
+.f13-lastfm-album-tags .f13-lastfm-album-tags-tag
+{
+    background: #eee;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 1em;
+    display: inline-block;
+    margin-top: 1em;
+    border: 1px solid #222;
+}
+
+.f13-lastfm-album-tags .f13-lastfm-album-tags-tag:hover
+{
+    background: #fff;
+}
+
+.f13-lastfm-album-published
+{
+    margin-top: 1em;
+}
+
+.f13-lastfm-album-published > span
+{
+    font-weight: bold;;
+}
+
+.f13-lastfm-album-summary
+{
+    margin-top: 1em;
+}
+
+.f13-lastfm-album-summary > span
+{
+    font-weight: bold;
+    display: block;
+}
