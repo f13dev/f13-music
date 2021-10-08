@@ -21,7 +21,7 @@ class Plugin
 {
     public function init()
     {
-        spl_autoload_register(__NAMESPACE__.'\Plugin::autoload');
+        spl_autoload_register(__NAMESPACE__.'\Plugin::loader');
 
         add_action('wp_enqueue_scripts', array($this, 'style_and_scripts'));
         add_action('admin_enqueue_scripts', array($this, 'admin_style_and_scripts'));
@@ -39,13 +39,21 @@ class Plugin
         $c = new Controllers\Control();
     }
 
-    public static function autoload($class)
+    public static function loader($name)
     {
-        $class = ltrim($class, '\\');
-        if (strpos($class, __NAMESPACE__) !== 0) return;
-        $class = ltrim(str_replace(__NAMESPACE__, '', $class), '\\');
-        $path = F13_LASTFM_PATH.strtolower(str_replace('\\', DIRECTORY_SEPARATOR, $class).'.php');
-        require_once $path;
+        $name = trim(ltrim($name, '\\'));
+        if (strpos($name, __NAMESPACE__) !== 0) {
+            return;
+        }
+        $file = str_replace(__NAMESPACE__, '', $name);
+        $file = str_replace('\\', DIRECTORY_SEPARATOR, $file);
+        $file = plugin_dir_path(__FILE__).strtolower($file).'.php';
+
+        if (file_exists($file)) {
+            require_once $file;
+        } else {
+            die('Class not found: '.$name);
+        }
     }
 
     public function style_and_scripts()
