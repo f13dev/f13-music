@@ -21,7 +21,7 @@ class Admin
             add_menu_page( 'F13 Settings', 'F13 Admin', 'manage_options', 'f13-settings', array($this, 'f13_settings'), 'dashicons-embed-generic', 4);
             add_submenu_page( 'f13-settings', 'Plugins', 'Plugins', 'manage_options', 'f13-settings', array($this, 'f13_settings'));
         }
-        add_submenu_page( 'f13-settings', 'F13 LastFM Settings', 'Last.FM', 'manage_options', 'f13-settings-lastfm', array($this, 'f13_lastfm_settings'));
+        add_submenu_page( 'f13-settings', 'F13 Music Settings', 'Music', 'manage_options', 'f13-settings-music', array($this, 'f13_lastfm_settings'));
     }
 
     public function f13_settings()

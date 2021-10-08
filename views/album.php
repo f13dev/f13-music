@@ -2,11 +2,17 @@
 
 class Album
 {
+    public $label_album_summary;
+    public $label_published;
+
     public function __construct( $args = array() )
     {
         foreach ($args as $variable => $value) {
             $this->{$variable} = $value;
         }
+
+        $this->label_album_summary  = __('Album summary', 'f13-lastfm');
+        $this->label_published      = __('Published', 'f13-lastfm');
     }
 
     public function album()
@@ -52,12 +58,12 @@ class Album
             {
                 $publishDate = explode(',', $this->data['album']['wiki']['published']);
                 $publishDate = $publishDate[0];
-                $v .= '<div class="f13-lastfm-album-published"><span>Published</span>: ' . $publishDate . '</div>';
+                $v .= '<div class="f13-lastfm-album-published"><span>'.$this->label_published.':</span> ' . $publishDate . '</div>';
             }
 
             if (array_key_exists('album', $this->data['album']) && array_key_exists('summary', $this->data['album']['wiki']))
             {
-                $v .= '<div class="f13-lastfm-album-summary"><span>Album summary:</span> ' . $this->data['album']['wiki']['summary'] . '</div>';
+                $v .= '<div class="f13-lastfm-album-summary"><span>'.$this->label_album_summary.':</span> ' . $this->data['album']['wiki']['summary'] . '</div>';
             }
         $v .= '</div>';
 

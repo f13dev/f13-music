@@ -5,15 +5,11 @@ Plugin URI: https://f13.dev/wordpress-plugins/wordpress-plugin-music/
 Description: Last FM profile widget, and album shortcode
 Version: 0.0.1
 Author: Jim Valentine
-Author URI: https://www.f13.dev
-Text Domain: f13
+Author URI: https://f13.dev
+Text Domain: f13-lastfm
 */
 
 namespace F13\LastFM;
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 if (!isset($wpdb)) global $wpdb;
 if (!function_exists('get_plugins')) require_once(ABSPATH.'wp-admin/includes/plugin.php');
