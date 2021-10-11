@@ -24,7 +24,7 @@ class Album
 
             if (!empty($this->art)) {
                 $v .= '<div class="f13-lastfm-album-art">';
-                    $v .= '<img src="'.$this->art.'" />';
+                    $v .= '<img src="'.$this->art.'" alt="Album artwork for '.$this->data['album']['artist'].' - '.$this->data['album']['name'].'"/>';
                 $v .= '</div>';
             }
 
