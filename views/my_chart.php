@@ -42,8 +42,8 @@ class My_chart
 
     public function my_chart()
     {
-        $v = '<div style="border: 1px solid #222; border-radius: 10px;">';
-            $v .= '<table style="width: 100%; margin: 5px 0px;">';
+        $v = '<div>';
+            $v .= '<table style="width: 100%; border: 0; margin: 0;">';
                 $v .= '<thead>';
                     $v .= '<tr>';
                         $v .= '<th colspan="2" style="text-align: center; font-size: 1.5em; font-weight: bold;">';
@@ -51,6 +51,9 @@ class My_chart
                                 $v .= $this->data['toptracks']['@attr']['user'].'\'s '.$this->label_charts.' ';
                                 $v .= '<input type="hidden" name="action" value="f13-charts">';
                                 $v .= '<input type="hidden" name="target" value="f13-charts-container">';
+                                $v .= '<input type="hidden" name="submit" value="1">';
+                                $v .= '<input type="hidden" name="cache" value="'.$this->cache.'">';
+                                $v .= '<input type="hidden" name="limit" value="'.$this->limit.'">';
                                 $v .= '<select name="period">';
                                     $v .= '<option value="7day"'.(($this->period == '7day') ? ' selected="selected"' : '').'>'.$this->label_7_days.'</option>';
                                     $v .= '<option value="1month"'.(($this->period == '1month') ? ' selected="selected"' : '').'>'.$this->label_1_month.'</option>';
@@ -68,13 +71,11 @@ class My_chart
                     $v .= '</tr>';
                 $v .= '</thead>';
                 $v .= '<tbody>';
-                    $odd = true;
                     foreach ($this->data['toptracks']['track'] as $track) {
-                        $v .= '<tr '.(($odd) ? 'style="background-color: #eee;"' : '').'>';
+                        $v .= '<tr>';
                             $v .= '<td style="padding-left: 10px;">'.$track['@attr']['rank'].'</td>';
                             $v .= '<td style="padding-right: 10px;">'.$track['name'].' by '.$track['artist']['name'].'<br>'.$this->label_play_count.': '.$track['playcount'].'</td>';
                         $v .= '</tr>';
-                        $odd = !$odd;
                     }
                 $v .= '</tbody>';
             $v .= '</table>';

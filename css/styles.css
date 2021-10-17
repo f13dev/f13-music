@@ -1,9 +1,8 @@
 .f13-lastfm-album-container
 {
-    background: #fff;
-    border-radius: 10px;
+    background: #fafafa;
     padding: 10px;
-    border: 1px solid #222;
+    border: 1px solid #ccc;
     margin: 10px 0px;
 }
 
@@ -56,18 +55,18 @@
 
 .f13-lastfm-album-tags .f13-lastfm-album-tags-tag
 {
-    background: #eee;
-    border-radius: 5px;
+    background: #fff;
     padding: 5px 10px;
     margin-right: 1em;
     display: inline-block;
     margin-top: 1em;
-    border: 1px solid #222;
+    border: 1px solid #ccc;
 }
 
 .f13-lastfm-album-tags .f13-lastfm-album-tags-tag:hover
 {
-    background: #fff;
+    text-decoration: underline;
+    border: 1px solid #222;
 }
 
 .f13-lastfm-album-published
@@ -89,4 +88,18 @@
 {
     font-weight: bold;
     display: block;
+}
+
+#f13-charts-container {
+    border: 1px solid #ccc;
+    background: #fafafa;
+}
+
+.f13_music_lyrics {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    max-height: 500px;
+    overflow-y:auto;
+    background: #fafafa;
 }

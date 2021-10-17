@@ -8,6 +8,13 @@ class Lyrics
             return '<div style="padding: 10px; margin: 10px 0px; background: #ffcccc; border: 1px solid #222; text-align: center;">'.__('Please enter an artist and song argument in the shortcode', 'f13-lastfm').'</div>';
         }
 
+        $cache_key = 'f13_music_'.sha1($artist.$song.$cache);
+        $transient = get_transient( $cache_key );
+        if ( $transient ) {
+            echo '<script>console.log("Building lyrics from transient: '.$cache_key.'");</script>';
+            return $transient;
+        }
+
         $m = new \F13\LastFM\Models\Lyrics();
         $data = $m->get_lyrics($artist, $song);
 
@@ -21,6 +28,11 @@ class Lyrics
             'song' => $song,
         ));
 
-        return $v->lyrics();
+        $return = $v->lyrics();
+
+        set_transient($cache_key, $return, $cache);
+        echo '<script>console.log("Building lyrics from API, setting transient: '.$cache_key.'");</script>';
+
+        return $return;
     }
 }

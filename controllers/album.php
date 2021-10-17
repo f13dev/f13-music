@@ -11,6 +11,13 @@ class Album
             return '<div style="padding: 10px; margin: 10px 0px; background: #ffcccc; border: 1px solid #222; text-align:center;">'.__('Please enter an artist and album argument in the shortcode', 'f13-lastfm').'</div>';
         }
 
+        $cache_key = 'f13_music_'.sha1($artist.$album.$cache);
+        $transient = get_transient( $cache_key );
+        if ( $transient ) {
+            echo '<script>console.log("Building album from transient: '.$cache_key.'");</script>';
+            return $transient;
+        }
+
         $m = new \F13\LastFM\Models\LastFM_api();
         $this->data = $m->get_album($artist, $album);
 
@@ -25,7 +32,12 @@ class Album
             'art' => $this->art,
         ));
 
-        return $v->album();
+        $return = $v->album();
+
+        set_transient($cache_key, $return, $cache);
+        echo '<script>console.log("Building album from API, setting transient: '.$cache_key.'");</script>';
+
+        return $return;
     }
 
     public function get_album_art()

@@ -47,6 +47,7 @@ class Control
     {
         extract(shortcode_atts(array('limit' => '10', 'cache' => ''), $atts));
         $cache = $this->_check_cache( $cache );
+        echo 'Cache: '.$cache;
         $c = new My_chart( );
         return $c->my_chart( $limit, $cache );
     }
