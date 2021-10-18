@@ -18,7 +18,7 @@ class My_chart
             $cache = (int) filter_input($this->request_method, 'cache');
         }
 
-        $cache_key = 'f13_music_chart_'.md5($limit.'-'.$period.'-'.$cache);
+        $cache_key = 'f13_music_chart_'.sha1(F13_LASTFM['Version'].'-'.$limit.'-'.$period.'-'.$cache);
         $transient = get_transient( $cache_key );
         if ( $transient ) {
             echo '<script>console.log("Building chart from transient: '.$cache_key.'");</script>';

@@ -8,7 +8,7 @@ class Lyrics
             return '<div style="padding: 10px; margin: 10px 0px; background: #ffcccc; border: 1px solid #222; text-align: center;">'.__('Please enter an artist and song argument in the shortcode', 'f13-lastfm').'</div>';
         }
 
-        $cache_key = 'f13_music_'.sha1($artist.$song.$cache);
+        $cache_key = 'f13_music_'.sha1(F13_LASTFM['Version'].'-'.$artist.'-'.$song.'-'.$cache);
         $transient = get_transient( $cache_key );
         if ( $transient ) {
             echo '<script>console.log("Building lyrics from transient: '.$cache_key.'");</script>';

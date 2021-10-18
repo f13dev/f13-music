@@ -11,7 +11,7 @@ class Album
             return '<div style="padding: 10px; margin: 10px 0px; background: #ffcccc; border: 1px solid #222; text-align:center;">'.__('Please enter an artist and album argument in the shortcode', 'f13-lastfm').'</div>';
         }
 
-        $cache_key = 'f13_music_'.sha1($artist.$album.$cache);
+        $cache_key = 'f13_music_'.sha1(F13_LASTFM['Version'].'-'.$artist.'-'.$album.'-'.$cache);
         $transient = get_transient( $cache_key );
         if ( $transient ) {
             echo '<script>console.log("Building album from transient: '.$cache_key.'");</script>';
