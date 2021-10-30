@@ -1,6 +1,6 @@
 .f13-lastfm-album-container
 {
-    background: #fafafa;
+    background: #f6f6f6;
     padding: 10px;
     border: 1px solid #ccc;
     margin: 10px 0px;
@@ -92,7 +92,7 @@
 
 #f13-charts-container {
     border: 1px solid #ccc;
-    background: #fafafa;
+    background: #f6f6f6;
 }
 
 .f13_music_lyrics {
@@ -101,5 +101,5 @@
     margin: 10px 0;
     max-height: 500px;
     overflow-y:auto;
-    background: #fafafa;
+    background: #f6f6f6;
 }
